@@ -1,0 +1,26 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: redis-cluster
+  redis:
+    database: 0
+    timeout: 15000
+    password: wj
+    cluster:
+      # Redis 集群地址信息
+      nodes: 192.168.1.10:8001,192.168.1.10:8002,192.168.1.10:8003,192.168.1.10:8004,192.168.1.10:8005,192.168.1.10:8006
+      # 获取失败 最大重定向次数
+      max-redirects: 5
+    #如果用以前的jedis，可以把下面的lettuce换成jedis即可
+    jedis:
+      pool:
+        # 连接池最大连接数默认值为8
+        max-active: 20
+        # 连接池最大阻塞时间（使用负值表示没有限制）默认值为-1
+        max-wait: 6000
+        # 连接池中最大空闲连接数默认值为8
+        max-idle: 10
+        # 连接池中的最小空闲连接数，默认值为0
+        min-idle: 10
